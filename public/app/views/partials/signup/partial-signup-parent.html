@@ -1,0 +1,70 @@
+<section>
+    <form ng-submit="spc.signupParent()" class="form-auth">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="login-bx text-center">
+                <h2 class="form-auth-heading signup">
+                    SIGN UP
+                </h2>
+                <h4>Sign up with 14 day free account, cancel anymore.</h4>
+                <h3>Parent Account Signup</h3>
+            </div>
+            <div class="form-group text-center">
+                <div class="alert alert-danger" ng-if="spc.signupError" role="alert">{{ spc.signupErrorMessage }}</div>
+                <div class="alert alert-success" ng-if="spc.signupSuccess" role="alert">
+                    {{ spc.signupParentSuccessMessage }}.<br> If you aleady have a account <a ui-sref="login">login</a>!
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="firstName">
+                            First name
+                        </label>
+                        <input ng-model="spc.firstName" type="text" class="form-control" id="firstName" name="firstName" placeholder="ex: John" required autofocus autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lastName">
+                            Last name
+                        </label>
+                        <input ng-model="spc.lastName" type="text" class="form-control" id="lastName" name="lastName" placeholder="ex: Devil" required autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="email">
+                            Email
+                        </label>
+                        <input ng-model="spc.email" type="email" class="form-control" id="email" name="email" placeholder="ex: john.devil@gmail.com" required autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="password">
+                            Password
+                        </label>
+                        <input ng-model="spc.password" type="password" class="form-control" id="password" name="password" placeholder="password" required autocomplete="on">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <p class="ml-5">
+                                Already have an account, sign in
+                                <a ui-sref="login">here</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Next Step
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

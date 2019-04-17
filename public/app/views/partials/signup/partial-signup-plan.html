@@ -1,0 +1,75 @@
+<section>
+    <form ng-submit="spnc.signupPlan()">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="login-bx text-center">
+                <h2 class="form-auth-heading signup">
+                    SIGN UP
+                </h2>
+                <h4>Sign up with 14 day free account, cancel anymore.</h4>
+                <h4>Parent email - {{ spnc.parentEmail }}</h4>
+                <h4>Student email - {{ spnc.studentEmail }}</h4>
+                <h3>Choose the plan for Account Signup</h3>
+            </div>
+            <div class="form-group">
+                <label for="plan">
+                    Plan
+                </label>
+                <select class="form-control" ng-model="spnc.selectedPlan" ng-options="x.name for x in spnc.plans">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cardName">
+                    Card holder's name
+                </label>
+                <input ng-model="spnc.cardName" type="text" id="cardName" name="cardName" class="form-control" required autofocus autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">
+                    Cell Phone
+                </label>
+                <input ng-model="spnc.phoneNumber" type="number" id="phoneNumber" name="phoneNumber" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">
+                    Card Number
+                </label>
+                <input ng-model="spnc.cardNumber" type="number" id="cardNumber" name="cardNumber" class="form-control" required>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="expirationDate">
+                            Expireation Date
+                        </label>
+                        <input ng-model="spnc.expirationDate" type="date" id="expirationDate" name="expirationDate" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cvc">
+                            CVC
+                        </label>
+                        <input ng-model="spnc.cvc" type="number" class="form-control" id="cvc" name="cvc" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="policy">
+                            <input ng-model="spnc.checkPolicy" type="checkbox" name="policy" id="policy" class="form-control">
+                            I agree <a href="#"> turms </a> and <a href="#"> privacy </a> policy.
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-primary">
+                            Next Step
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

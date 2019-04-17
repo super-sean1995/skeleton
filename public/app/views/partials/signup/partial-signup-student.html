@@ -1,0 +1,129 @@
+<section>
+    <form ng-submit="ssc.signupStudent()">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="login-bx text-center">
+                <h2 class="form-auth-heading signup">
+                    SIGN UP
+                </h2>
+                <h4>Sign up with 14 day free account, cancel anymore.</h4>
+                <h4>Parent email - {{ ssc.parentEmail }}</h4>
+                <h3>Student Account Signup</h3>
+            </div>
+            <div class="form-group text-center">
+                <div class="alert alert-danger" ng-if="ssc.signupError" role="alert">{{ ssc.signupErrorMessage }}</div>
+                <div class="alert alert-success" ng-if="ssc.signupSuccess" role="alert">
+                    {{ ssc.signupStudentSuccessMessage }}.<br> If you aleady have a account <a ui-sref="login">login</a>!
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="firstName">
+                            First name
+                        </label>
+                        <input ng-model="ssc.firstName" type="text" id="firstName" name="firstName" placeholder="ex: john" class="form-control" required autofocus autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="firstName">
+                            Last name
+                        </label>
+                        <input ng-model="ssc.lastName" type="text" id="lastName" name="lastName" placeholder="ex: mahan" class="form-control" required autocomplete="on">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    Phone number
+                </label>
+                <input ng-model="ssc.phoneNumber" type="number" id="phoneNumber" name="phoneNumber" placeholder="ex: +000000000000" class="form-control" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    Email
+                </label>
+                <input ng-model="ssc.email" type="text" id="email" name="email" placeholder="ex: john.mahan@gmail.com" class="form-control" required autocomplete="on">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="state">
+                            State
+                        </label>
+                        <select class="form-control" ng-model="ssc.selectedState" ng-options="x.name for x in ssc.states">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="school">
+                            School
+                        </label>
+                        <select class="form-control" id="school" ng-model="ssc.selectedShool" ng-options="x.name for x in ssc.schools">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="year">
+                            Year
+                        </label>
+                        <select class="form-control" id="year" ng-model="ssc.selectedYear" ng-options="x.name for x in ssc.years">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="major">
+                            Major
+                        </label>
+                        <select class="form-control" id="major" ng-model="ssc.selectedMajor" ng-options="x.name for x in ssc.majors">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="sport">
+                            Sport
+                        </label>
+                        <select class="form-control" id="sport" ng-model="ssc.selectedSport" ng-options="x.name for x in ssc.sports">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="activity">
+                            Activity
+                        </label>
+                        <select class="form-control" id="activity" ng-model="ssc.selectedActivity" ng-options="x.name for x in ssc.activities">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="challenge">
+                    Challenge
+                </label>
+                <select class="form-control" id="challenge" ng-model="ssc.selectedChallenge" ng-options="x.name for x in ssc.challenges">
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Next Step
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
