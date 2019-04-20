@@ -41,6 +41,10 @@ var modelDefinition = {
         type: Sequelize.STRING,
         allowNull: true
     },
+    verify_code: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
     country_id: {
         type: Sequelize.INTEGER,
         allowNull: true

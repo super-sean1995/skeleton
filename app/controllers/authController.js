@@ -146,6 +146,7 @@ AuthController.signUpPlan = function(req, res) {
                         emailHandler.sendVerificationCode(parentEmail, function(callback) {
                             if (callback) {
                                 console.log(callback);
+                                Parent.update({verify_code : callback.rand}, { where: { id : parentID } });
                             }
                             res.status(201).json({
                                 parentID: parentID,
@@ -169,7 +170,55 @@ AuthController.signUpPlan = function(req, res) {
 
 // Parent email verification using mail handler.
 AuthController.signUpParentVerify = function(req, res) {
-    console.log(req.body);
+    if(!req.body.parentID || !req.body.verifyCode) {
+
+    } else {
+        var parentID = req.body.parentID,
+            verifyCode = req.body.verifyCode,
+            potentialID = { where : { id: req.body.parentID } };
+
+        Parent.findOne(potentialID).then(function(parent) {
+            if (parent) {
+                if(parent.dataValues.verify_code == verifyCode) {
+                    res.status(201).json({
+                        message: 'verified your account!',
+                        parentID: parentID
+                    })
+                } else {
+                    res.status(404).json({
+                        message: 'Invalidated your email, do you want to try again?'
+                    })
+                }
+            } else {
+                res.status(404).json({
+                    message: 'Incorrect Email vailidation, you are not user!'
+                });
+            }
+        })
+    }
+}
+
+// Signup Set Suffix.
+AuthController.signUpSetSuffix = function(req, res) {
+    Parent.findOne({ where : { id: req.body.parentID } }).then(function(parent) {
+        if(parent) {
+            var parentID = req.body.parentID,
+            suffix = req.body.suffix,
+            potentialID = { where : { id : parentID } },
+            updateData = { suffix : suffix };
+    
+            Parent.update(potentialID, updateData);
+
+            res.status(201).json({
+                message: '',
+                parentID : parentID
+            });
+        } else {
+            res.status(404).json({
+                message : ''
+            });
+        }
+    });
 }
 
 AuthController.signUp = function(req, res) {

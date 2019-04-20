@@ -14,7 +14,7 @@ var smtpTransport = nodemailer.createTransport(config.smtp);
 var rand,mailOptions;
 
 function sendVerificationCode (email, callback) {
-    rand = Math.floor((Math.random * 100000) + 34528);
+    rand = Math.floor((Math.random() * 100000) + 34528);
     
     mailOptions = {
         to : email,
@@ -22,11 +22,13 @@ function sendVerificationCode (email, callback) {
         html: "Hello,<br> Please Click on the link to verify your email.<br>number is <strong>" + rand + "</strong>"
     }
 
+    console.log(rand);
+
     smtpTransport.sendMail(mailOptions, function(error, response) {
         if (error) {
             callback(error);
         } else {
-            callback(null, response);
+            callback(null, rand);
         }
     })
 }

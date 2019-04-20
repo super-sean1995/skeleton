@@ -19,6 +19,7 @@
             signupStudent       : signupStudent,
             signupPlan          : signupPlan,
             signupParentVerify  : signupParentVerify,
+            setSuffix           : setSuffix,
             // signup: signup,
             getUserData         : getUserData,
             isAuthenticated     : isAuthenticated
@@ -110,6 +111,16 @@
             var reqObj = {
                 method: 'POST',
                 url: 'api/signup/parent/verify',
+                data: data
+            }
+
+            return $http(reqObj);
+        }
+
+        function setSuffix(data) {
+            var reqObj = {
+                method: 'POST',
+                url: 'api/signup/setsuffix',
                 data: data
             }
 

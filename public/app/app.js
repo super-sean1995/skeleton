@@ -138,6 +138,17 @@
             controller: 'SignupParentVerifyController as spvc'
         });
 
+
+        // Signup Parent Suffix route.
+        $stateProvider.state('signup/parent/suffix', {
+            url: '/signup',
+            templateUrl: 'app/views/partials/signup/partial-signup-add-suffix.html',
+            params: {
+                obj: null
+            },
+            controller: 'SignupAddSuffixController as spas'
+        });
+
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('requestInterceptor');
     }

@@ -15,10 +15,13 @@
         var vm = this;
 
         vm.signupParentVerify = signupParentVerify;
+
+        console.log($stateParams.obj);
         
         function  signupParentVerify() {
             var signupParentVerifyData = {
-                verifyCode: vm.verifyCode
+                verifyCode: vm.verifyCode,
+                parentID: $stateParams.obj.parentID
             }
             authService.signupParentVerify(signupParentVerifyData)
                 .then(handleSuccessfulParentVerify)
@@ -33,5 +36,4 @@
             console.log(response.data)
         }
     }
-
 })();
