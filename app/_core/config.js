@@ -26,6 +26,15 @@ config.keys = {
     secret: '/jVdfUX+u/Kn3qPY4+ahjwQgyV5UhkM5cdh1i2xhozE=' // Not anymore...
 };
 
+// SMTP userconfigration
+config.smtp = {
+    service: "Gmail",
+    auth: {
+        user: 'rangotoptalent@gmail.com',
+        pass: 'Rango941001top@@@'
+    }
+}
+
 // User access configration.
 var userRoles = config.userRoles = {
     student: 1,    // ...001

@@ -32,9 +32,6 @@
                 expirationDate : vm.expirationDate,
                 cvc            : vm.cvc                 
             }
-
-            console.log(signupPlanData);
-
             authService.signupPlan(signupPlanData)
                 .then(handleSuccessfulSignupPlan)
                 .catch(handleFailedSignupPlan);
@@ -49,12 +46,13 @@
             //     studentID: response.data.studentID,
             //     studentEmail: response.data.studentEmail
             // }
-            // setTimeout(() => {
-            //     $state.go('signup/plan', { obj: sendDataObj});
-            // }, 800);
+            setTimeout(() => {
+                $state.go('signup/parent/verify', { obj: response.data});
+            }, 800);
         }
 
         function handleFailedSignupPlan(response) {
+            console.log(response);
             // vm.signupSuccess = false;
 
             // if(response && response.data) {

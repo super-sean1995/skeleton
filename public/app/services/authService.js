@@ -13,14 +13,15 @@
     function authService($http, $cookies, $state) {
 
         var authService = {
-            login            : login,
-            logout           : logout,
-            signupParent     : signupParent,
-            signupStudent    : signupStudent,
-            signupPlan       : signupPlan,
+            login               : login,
+            logout              : logout,
+            signupParent        : signupParent,
+            signupStudent       : signupStudent,
+            signupPlan          : signupPlan,
+            signupParentVerify  : signupParentVerify,
             // signup: signup,
-            getUserData      : getUserData,
-            isAuthenticated  : isAuthenticated
+            getUserData         : getUserData,
+            isAuthenticated     : isAuthenticated
         };
 
         return authService;
@@ -100,6 +101,16 @@
                 method: 'POST',
                 url   : '/api/signup/plan',
                 data  : data
+            }
+
+            return $http(reqObj);
+        }
+
+        function signupParentVerify(data) {
+            var reqObj = {
+                method: 'POST',
+                url: 'api/signup/parent/verify',
+                data: data
             }
 
             return $http(reqObj);

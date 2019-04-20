@@ -15,6 +15,7 @@ var APIRoutes = function(passport) {
     router.post('/signup/parent', AuthController.signUpParent);
     router.post('/signup/student', AuthController.signUpStudent);
     router.post('/signup/plan', AuthController.signUpPlan);
+    router.post('/signup/parent/verify', AuthController.signUpParentVerify);
     router.post('/authenticate', AuthController.authenticateUser);
 
     // GET Routes.

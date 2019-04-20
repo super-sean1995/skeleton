@@ -1,0 +1,30 @@
+<section>
+    <form ng-submit="spvc.signupParentVerify()" class="form-auth">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="login-bx text-center">
+                Parent Verification
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input ng-model="spvc.verifyCode" type="text" required autofocus>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-primary btn-block"> Verify</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button ui-href="login" class="btn btn-outline-danger btn-block">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

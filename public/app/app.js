@@ -128,6 +128,16 @@
             controller: 'SignupPlanController as spnc'
         });
 
+        // Signup Parent Verify route.
+        $stateProvider.state('signup/parent/verify', {
+            url: '/signup',
+            templateUrl: 'app/views/partials/signup/partial-signup-parent-verify.html',
+            params: {
+                obj: null
+            },
+            controller: 'SignupParentVerifyController as spvc'
+        });
+
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('requestInterceptor');
     }

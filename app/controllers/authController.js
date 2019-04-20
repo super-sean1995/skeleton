@@ -5,8 +5,10 @@ var jwt = require('jsonwebtoken');
 
 var config = require('../_core/config'),
     db = require('../services/database'),
+    emailHandler = require('../services/emailHandler'),
     Parent = require('../models/Parent'),
     Student = require('../models/Student');
+   
 
 // The authentication controller.
 var AuthController = {};
@@ -108,6 +110,7 @@ AuthController.signUpStudent = function(req, res) {
     } 
 }
 
+// Subscription plan and billing method escrolling handler.
 AuthController.signUpPlan = function(req, res) {
     if(!req.body.parentID || !req.body.planID ) {
         res.status(403).json({
@@ -131,16 +134,42 @@ AuthController.signUpPlan = function(req, res) {
                     phone_number : phoneNumber,
                     card_number : cardNumber,
                     expiration_date : expirationDate,
-                    cvc : cvc
+                    cvc : cvc,
+                    status: 3
                 };
 
-                Parent.update(updateData, potentialID, function(response) {
-                    console.log('result' + response);
+                Parent.update(updateData, potentialID);
+
+                Parent.findOne(potentialID).then(function(parent) {
+                    if (parent) {
+                        var parentEmail = parent.dataValues.email;
+                        emailHandler.sendVerificationCode(parentEmail, function(callback) {
+                            if (callback) {
+                                console.log(callback);
+                            }
+                            res.status(201).json({
+                                parentID: parentID,
+                                message: 'please verify your account'
+                            });
+                        });
+                    } else {
+                        res.status(404).json({
+                            message : 'Verification failure!'
+                        })
+                    }
                 });
-            }
+            } else {
+                res.status(404).json({
+                    message: 'Validation error!'
+                });
+            }        
         });
     }
-    // console.log(req.body);
+}
+
+// Parent email verification using mail handler.
+AuthController.signUpParentVerify = function(req, res) {
+    console.log(req.body);
 }
 
 AuthController.signUp = function(req, res) {
