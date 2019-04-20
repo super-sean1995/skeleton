@@ -28,7 +28,7 @@ function sendVerificationCode (email, callback) {
         if (error) {
             callback(error);
         } else {
-            callback(null, rand);
+            callback(rand);
         }
     })
 }

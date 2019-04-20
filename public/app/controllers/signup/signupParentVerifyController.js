@@ -29,7 +29,9 @@
         }
 
         function handleSuccessfulParentVerify(response) {
-            console.log(response.data);
+            setTimeout(() => {
+                $state.go('signup/parent/suffix', { obj: response.data });
+            }, 800);
         }
 
         function handleFailedParentVerify(response) {

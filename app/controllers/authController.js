@@ -144,9 +144,8 @@ AuthController.signUpPlan = function(req, res) {
                     if (parent) {
                         var parentEmail = parent.dataValues.email;
                         emailHandler.sendVerificationCode(parentEmail, function(callback) {
-                            if (callback) {
-                                console.log(callback);
-                                Parent.update({verify_code : callback.rand}, { where: { id : parentID } });
+                            if (callback) { console.log(callback);
+                                Parent.update({verify_code : callback}, { where: { id : parentID } });
                             }
                             res.status(201).json({
                                 parentID: parentID,
@@ -179,7 +178,8 @@ AuthController.signUpParentVerify = function(req, res) {
 
         Parent.findOne(potentialID).then(function(parent) {
             if (parent) {
-                if(parent.dataValues.verify_code == verifyCode) {
+
+                if(parent.dataValues.verify_code.toString() == verifyCode) {
                     res.status(201).json({
                         message: 'verified your account!',
                         parentID: parentID
@@ -200,14 +200,15 @@ AuthController.signUpParentVerify = function(req, res) {
 
 // Signup Set Suffix.
 AuthController.signUpSetSuffix = function(req, res) {
+    // console.log(req.body);
     Parent.findOne({ where : { id: req.body.parentID } }).then(function(parent) {
         if(parent) {
-            var parentID = req.body.parentID,
+            var parentID = parent.dataValues.id,
             suffix = req.body.suffix,
             potentialID = { where : { id : parentID } },
             updateData = { suffix : suffix };
     
-            Parent.update(potentialID, updateData);
+            Parent.update(updateData, potentialID);
 
             res.status(201).json({
                 message: '',

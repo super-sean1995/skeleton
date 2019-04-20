@@ -149,6 +149,16 @@
             controller: 'SignupAddSuffixController as spas'
         });
 
+        // Signup Add Student route.
+        $stateProvider.state('signup/add/student', {
+            url: '/signup',
+            templateUrl: 'app/views/partials/signup/partial-signup-add-student.html',
+            params: {
+                obj: null
+            },
+            controller: 'SignupAddStudentController as sasc'
+        });
+
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('requestInterceptor');
     }
